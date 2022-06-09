@@ -35,14 +35,17 @@ public class Operation {
         return function.apply(a);
     }
 
-    public static Boolean checkEven(Predicate<Integer> predicate,Integer a){
+    public static Boolean checkEven(Predicate<Integer> predicate, Integer a) {
         return predicate.test(a);
     }
 
     public static void main(String[] args) {
 
-        Boolean aBoolean = checkEven((a) -> judgeEvenNumber(a), 99);
-        System.out.println("aBoolean = " + aBoolean);
+        int i = handleOne(a -> addOne(a), 3);
+        System.out.println("i = " + i);
+
+//        Boolean aBoolean = checkEven((a) -> judgeEvenNumber(a), 99);
+//        System.out.println("aBoolean = " + aBoolean);
 
 //        Boolean aBoolean = judgeEvenNumber(4);
 //        System.out.println("aBoolean = " + aBoolean);
