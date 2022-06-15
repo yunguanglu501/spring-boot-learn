@@ -7,25 +7,28 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- * @Description:
- * @Author: wcy
- * @CreateDate: 2022/6/15 17:01
+  * @Description:    
+  * @Author:         wcy
+  * @CreateDate:     2022/6/15 16:59
  */
 @Data
-@TableName(value = "item")
-public class Item {
+@TableName(value = "product")
+public class Product {
+    /**
+     * 主键
+     */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
      * 商品名
      */
-    @TableField(value = "item_name")
-    private String itemName;
+    @TableField(value = "product_name")
+    private String productName;
 
     /**
      * 库存
      */
-    @TableField(value = "item_stock")
-    private Integer itemStock;
+    @TableField(value = "product_stock")
+    private Integer productStock;
 }
