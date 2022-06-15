@@ -17,6 +17,7 @@ public class TestValidController {
 
     @RequestMapping("testValid")
     public User testValid(@RequestBody User user) throws Exception {
+
         return user;
     }
 }

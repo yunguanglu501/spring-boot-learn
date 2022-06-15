@@ -6,10 +6,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.learn.common.Result;
 import com.example.learn.entity.EduStudent;
 import com.example.learn.entity.Student;
 import com.example.learn.mapper.EduStudentMapper;
 import com.example.learn.mapper.StudentMapper;
+import com.example.learn.service.StudentService;
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,11 +86,12 @@ public class StudentController  {
 
     }
 
-    @RequestMapping("selectOne")
-    public Student selectOne() {
+    @Autowired
+    StudentService studentService;
 
-        Student student = studentMapper.selectOne(Wrappers.<Student>lambdaQuery().select(Student::getStuName,Student::getStuId).eq(Student::getStuName, "李师师5"));
-        return student;
+    @RequestMapping("selectOne")
+    public Result<Student> selectOne(String name) {
+        return studentService.selectOne(name);
 
     }
 
