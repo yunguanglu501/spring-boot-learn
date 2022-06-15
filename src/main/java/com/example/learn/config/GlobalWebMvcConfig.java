@@ -1,5 +1,6 @@
 package com.example.learn.config;
 
+import com.example.learn.inteceptor.ResponseResultInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -19,10 +20,15 @@ public class GlobalWebMvcConfig implements WebMvcConfigurer {
     @Resource
     private HandlerInterceptor authInterceptor;
 
+    @Resource
+    private ResponseResultInterceptor responseResultInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 可按照顺序定义多个
-        registry.addInterceptor(authInterceptor).addPathPatterns("/**");
+//        registry.addInterceptor(authInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(responseResultInterceptor).addPathPatterns("/**");
+
         // 支持定义多个PathPattern和excludePathPatterns
         //registry.addInterceptor(xxxInterceptor).addPathPatterns("/xxx","/**").excludePathPatterns("/yyy","/zzz");
     }

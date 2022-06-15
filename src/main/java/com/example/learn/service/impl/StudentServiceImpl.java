@@ -1,6 +1,5 @@
 package com.example.learn.service.impl;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.example.learn.common.Result;
 import com.example.learn.entity.Student;
@@ -22,6 +21,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Result<Student> selectOne(String name) {
-        return Result.of(studentMapper.selectOne(Wrappers.<Student>lambdaQuery().select(Student::getStuName,Student::getStuId).eq(Student::getStuName, name)));
+        return Result.of(studentMapper.selectOne(Wrappers.<Student>lambdaQuery().select(Student::getStuName, Student::getStuId).eq(Student::getStuName, name)));
+    }
+
+    @Override
+    public Student selectOneResult(String name) {
+        return studentMapper.selectOne(Wrappers.<Student>lambdaQuery().select(Student::getStuName, Student::getStuId).eq(Student::getStuName, name));
     }
 }

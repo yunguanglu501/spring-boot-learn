@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 /**
  * 切面
  */
-@Aspect
+//@Aspect
 @Component
 @Slf4j
 public class ServiceAspect {

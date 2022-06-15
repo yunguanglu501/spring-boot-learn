@@ -11,4 +11,5 @@ import com.example.learn.entity.Student;
 public interface StudentService {
     Result<Student> selectOne(String name);
 
+    Student selectOneResult(String name);
 }
