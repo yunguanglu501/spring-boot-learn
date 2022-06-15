@@ -1,4 +1,6 @@
 spring:
+  redis:
+    host: 192.168.180.140
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
