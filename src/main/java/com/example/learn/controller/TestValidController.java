@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestValidController {
 
 
-    @RequestMapping("testValid")
+    @RequestMapping("testValid1")
     public User testValid(@RequestBody User user) throws Exception {
 
         return user;

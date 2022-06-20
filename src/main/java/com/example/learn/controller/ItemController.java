@@ -68,4 +68,27 @@ public class ItemController {
         }
         return Boolean.TRUE;
     }
+
+
+    @RequestMapping("buyItem2")
+    public Boolean buyItem2(Integer id) throws Exception {
+        synchronized (ItemController.class){
+            Item item = itemMapper.selectById(id);
+            if (item != null && item.getItemStock() > 0) {
+                item.setItemStock(item.getItemStock() - 1);
+                itemMapper.updateById(item);
+                //生成订单
+                Order order = new Order();
+                order.setItemId(id);
+                order.setBuyName("张三" + System.currentTimeMillis() + new Random().nextLong());
+                orderMapper.insert(order);
+                return Boolean.TRUE;
+            } else {
+                return Boolean.FALSE;
+            }
+        }
+
+    }
+
+
 }
