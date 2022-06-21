@@ -15,5 +15,7 @@ import java.lang.annotation.*;
 @Documented
 public @interface ResponseResult {
 
+
+
     Class<? extends BaseResult>  value() default PlatformResult.class;
 }
