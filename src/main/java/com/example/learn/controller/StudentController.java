@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.learn.common.Result;
 import com.example.learn.entity.EduStudent;
@@ -12,13 +11,16 @@ import com.example.learn.entity.Student;
 import com.example.learn.mapper.EduStudentMapper;
 import com.example.learn.mapper.StudentMapper;
 import com.example.learn.service.StudentService;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -47,6 +49,9 @@ public class StudentController  {
 
     @Autowired
     StudentMapper studentMapper;
+
+    @Autowired
+    EduStudentMapper eduStudentMapper;
 
     @RequestMapping("save")
     public Student save() {
@@ -79,10 +84,14 @@ public class StudentController  {
     }
 
     @RequestMapping("selectBatch")
-    public List<Student> selectBatch() {
-
-        List<Student> students = studentMapper.selectBatchIds(Lists.newArrayList("1001", "1006", "222"));
-        return students;
+    public Map<String, Object> selectBatch() {
+        Page page = PageHelper.startPage(1, 2);
+        List<EduStudent> eduStudents = eduStudentMapper.selectList(Wrappers.<EduStudent>lambdaQuery().like(EduStudent::getStuName, "狐"));
+        long total = page.getTotal();
+        Map<String, Object> map = new HashMap<>();
+        map.put("total",total);
+        map.put("list",eduStudents);
+        return map;
 
     }
 

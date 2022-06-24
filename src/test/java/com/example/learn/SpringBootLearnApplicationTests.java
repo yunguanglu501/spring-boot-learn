@@ -11,9 +11,10 @@ class SpringBootLearnApplicationTests {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
+
     @Test
     void contextLoads() {
-        stringRedisTemplate.opsForValue().set("k123","v123");
+        stringRedisTemplate.opsForValue().set("k123","v124");
     }
 
 }

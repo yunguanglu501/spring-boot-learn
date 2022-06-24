@@ -6,7 +6,7 @@ import com.example.learn.entity.EduStudent;
 /**
  * @Description:
  * @Author: wcy
- * @CreateDate: 2022/6/8 17:17
+ * @CreateDate: 2022/6/24 10:25
  */
 public interface EduStudentMapper extends BaseMapper<EduStudent> {
 }

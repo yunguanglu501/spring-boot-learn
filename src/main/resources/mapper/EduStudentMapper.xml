@@ -6,9 +6,11 @@
     <!--@Table edu_student-->
     <id column="stu_id" jdbcType="VARCHAR" property="stuId" />
     <result column="stu_name" jdbcType="VARCHAR" property="stuName" />
+    <result column="stu_stock" jdbcType="INTEGER" property="stuStock" />
+    <result column="num" jdbcType="INTEGER" property="num" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    stu_id, stu_name
+    stu_id, stu_name, stu_stock, num
   </sql>
 </mapper>
