@@ -11,7 +11,7 @@ spring:
   application:
     name: spring-boot-learn
 server:
-  port: 8080
+  port: 8081
   servlet:
     context-path: /spring-boot-learn
 mybatis-plus:
@@ -19,3 +19,15 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+xxl:
+  job:
+    accessToken:
+    admin:
+      addresses: http://127.0.0.1:8080/xxl-job-admin
+    executor:
+      address:
+      appname: demo
+      ip:
+      logpath: /data/applogs/xxl-job/jobhandler
+      logretentiondays: 30
+      port: 10001
