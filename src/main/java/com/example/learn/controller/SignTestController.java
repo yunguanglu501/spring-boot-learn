@@ -24,11 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class SignTestController {
 
     @Signature
-    @PostMapping("test/{id}")
-    public Result<String> myController(@PathVariable String id
+    @PostMapping("test/{id}/{keys}")
+    public Result<String> myController(@PathVariable String id,@PathVariable String keys
             , @RequestParam String client
             , @RequestBody User user) {
-        return Result.of(String.join(",", id, client, user.toString()));
+        return Result.of(String.join(",", id, keys,client, user.toString()));
     }
 
 }

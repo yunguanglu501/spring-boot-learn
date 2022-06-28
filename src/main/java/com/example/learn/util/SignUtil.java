@@ -37,6 +37,8 @@ public class SignUtil {
             String pathValues = String.join(",", Arrays.stream(paths).sorted().toArray(String[]::new));
             sb.append(pathValues);
         }
+        String join = String.join("#", DEFAULT_SECRET, sb.toString());
+        System.out.println("join = " + join);
         return SecureUtil.sha256(String.join("#", DEFAULT_SECRET, sb.toString()));
     }
 }

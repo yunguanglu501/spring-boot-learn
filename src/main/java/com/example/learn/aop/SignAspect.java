@@ -85,6 +85,7 @@ public class SignAspect {
         ServletWebRequest webRequest = new ServletWebRequest(request, null);
         Map<String, String> uriTemplateVars = (Map<String, String>) webRequest.getAttribute(
                 HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE, RequestAttributes.SCOPE_REQUEST);
+        System.out.println("uriTemplateVars = " + uriTemplateVars);
         if (!CollectionUtils.isEmpty(uriTemplateVars)) {
             paths = uriTemplateVars.values().toArray(new String[0]);
         }
