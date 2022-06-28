@@ -1,6 +1,7 @@
 package com.example.learn.test;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -12,8 +13,9 @@ import java.util.stream.Stream;
 public class Test1 {
 
     public static void main(String[] args) {
-
-        String x = "omrBq1HP9oyGc5uVTtEE7zqEBAWQ";
-        System.out.println("x.length() = " + x.length());
+        Integer x = 1;
+        if (Objects.equals(x,1)){
+            System.out.println("1111");
+        }
     }
 }

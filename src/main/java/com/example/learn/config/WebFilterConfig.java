@@ -1,5 +1,6 @@
 package com.example.learn.config;
 
+import com.example.learn.filter.RequestCachingFilter;
 import com.example.learn.filter.TimerFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -24,5 +25,20 @@ public class WebFilterConfig {
         // 设置：优先级
         registrationBean.setOrder(1);
         return registrationBean;
+    }
+
+
+
+    @Bean
+    public RequestCachingFilter requestCachingFilter() {
+        return new RequestCachingFilter();
+    }
+
+    @Bean
+    public FilterRegistrationBean requestCachingFilterRegistration(
+            RequestCachingFilter requestCachingFilter) {
+        FilterRegistrationBean bean = new FilterRegistrationBean(requestCachingFilter);
+        bean.setOrder(1);
+        return bean;
     }
 }
