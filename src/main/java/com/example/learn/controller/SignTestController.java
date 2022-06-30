@@ -6,15 +6,16 @@ package com.example.learn.controller;
  * @CreateDate: 2022/6/28 17:41
  */
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.example.learn.anno.Signature;
 import com.example.learn.common.Result;
 import com.example.learn.entity.User;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.learn.exception.BizException;
+import com.example.learn.util.SignUtils;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @author pdai
@@ -25,11 +26,36 @@ public class SignTestController {
 
     @Signature
     @PostMapping("test/{id}/{keys}")
-    public Result<String> myController(@PathVariable String id,@PathVariable String keys
+    public Result<String> myController(@PathVariable String id, @PathVariable String keys
             , @RequestParam String client
             , @RequestBody User user) {
-        return Result.of(String.join(",", id, keys,client, user.toString()));
+        return Result.of(String.join(",", id, keys, client, user.toString()));
+    }
+
+
+    @PostMapping("testSign2")
+    public Result<String> testSign2(@RequestBody User user) {
+        validSign(user);
+        return Result.of(String.join(user.toString()));
+    }
+
+    private void validSign(User user) {
+        if (user == null || user.getSign() == null) {
+            return;
+        }
+        try {
+            //转换成Map
+            Map<String, Object> stringObjectMap =
+                    JSON.parseObject(JSON.toJSONString(user), new TypeReference<Map<String, Object>>() {
+                    });
+            System.out.println("stringObjectMap = " + stringObjectMap);
+            String sign = SignUtils.getSign(stringObjectMap, "123");
+            if (!user.getSign().equals(sign)) {
+                throw new BizException("111222333", "sign不正确");
+            }
+        } catch (Exception e) {
+            throw new BizException("111222333", "sign不正确");
+        }
     }
 
 }
-
