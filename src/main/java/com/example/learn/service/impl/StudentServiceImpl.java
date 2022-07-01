@@ -5,6 +5,7 @@ import com.example.learn.common.Result;
 import com.example.learn.entity.Student;
 import com.example.learn.mapper.StudentMapper;
 import com.example.learn.service.StudentService;
+import com.example.learn.util.ThreadLocalUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,18 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student selectOneResult(String name) {
         return studentMapper.selectOne(Wrappers.<Student>lambdaQuery().select(Student::getStuName, Student::getStuId).eq(Student::getStuName, name));
+    }
+
+    @Override
+    public String saveUser() {
+        String token = ThreadLocalUtils.getToken();
+        //System.out.println("service:" + token);
+        //return token;
+
+        new Thread(() -> {
+            String threadToken = ThreadLocalUtils.getToken();//获取不到
+            System.out.println("new thread:" + threadToken);
+        }).start();
+        return token;
     }
 }
