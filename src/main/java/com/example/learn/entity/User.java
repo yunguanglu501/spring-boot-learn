@@ -1,25 +1,28 @@
 package com.example.learn.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import net.sf.oval.constraint.Length;
-import net.sf.oval.constraint.MatchPattern;
-import net.sf.oval.constraint.NotBlank;
-import net.sf.oval.constraint.NotNull;
 
 /**
- * @Description:
  * @Author: wcy
- * @CreateDate: 2022/6/14 14:38
+ * @Date: 2022/7/4 17:27
+ * @Version 1.0
  */
 @Data
+@TableName(value = "`user`")
 public class User {
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
-    @NotNull(message = "用户ID不能为空")
-    @NotBlank(message = "用户ID不能为空或空格")
-    private String username;
+    @TableField(value = "`name`")
+    private String name;
 
+    @TableField(value = "age")
+    private Integer age;
 
-    private String password;
-
-    private String sign;
+    @TableField(value = "gender")
+    private String gender;
 }

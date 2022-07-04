@@ -1,19 +1,19 @@
 spring:
   redis:
-    host: 192.168.180.140
+    host: 192.168.152.100
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
   datasource:
-    url: jdbc:mysql://localhost:3306/test-where?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&tinyInt1isBit=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&tinyInt1isBit=false&serverTimezone=Asia/Shanghai
     username: root
-    password: 4195460316
+    password: 123456
   application:
     name: spring-boot-learn
 server:
   port: 8081
-  servlet:
-    context-path: /spring-boot-learn
+#  servlet:
+#    context-path: /spring-boot-learn
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   configuration:

@@ -1,11 +1,9 @@
 package com.example.learn.controller;
 
 import com.alibaba.fastjson.JSON;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.DefaultTypedTuple;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,9 +35,9 @@ public class RedisRankingController {
             DefaultTypedTuple<String> tuple = new DefaultTypedTuple<>("张三" + i, 1D + i);
             tuples.add(tuple);
         }
-        System.out.println("循环时间:" +( System.currentTimeMillis() - start));
+        System.out.println("循环时间:" + (System.currentTimeMillis() - start));
         Long num = redisTemplate.opsForZSet().add(SCORE_RANK, tuples);
-        System.out.println("批量新增时间:" +(System.currentTimeMillis() - start));
+        System.out.println("批量新增时间:" + (System.currentTimeMillis() - start));
         System.out.println("受影响行数：" + num);
     }
 
@@ -68,7 +66,7 @@ public class RedisRankingController {
      * 获取单个的排行
      */
     @RequestMapping("find")
-    public void find(){
+    public void find() {
         Long rankNum = redisTemplate.opsForZSet().rank(SCORE_RANK, "李四");
         System.out.println("李四的个人排名：" + rankNum);
 
@@ -80,7 +78,7 @@ public class RedisRankingController {
      * 统计两个分数之间的人数
      */
     @RequestMapping("count")
-    public void count(){
+    public void count() {
         Long count = redisTemplate.opsForZSet().count(SCORE_RANK, 981, 9000);
         System.out.println("统计 991-9000之间的人数:" + count);
     }
@@ -89,7 +87,7 @@ public class RedisRankingController {
      * 获取整个集合的基数(数量大小)
      */
     @RequestMapping("zCard")
-    public void zCard(){
+    public void zCard() {
         Long aLong = redisTemplate.opsForZSet().zCard(SCORE_RANK);
         System.out.println("集合的基数为：" + aLong);
     }
@@ -99,7 +97,7 @@ public class RedisRankingController {
      * 使用加法操作分数
      */
     @RequestMapping("incrementScore")
-    public void incrementScore(){
+    public void incrementScore() {
         Double score = redisTemplate.opsForZSet().incrementScore(SCORE_RANK, "李四", 1000);
         System.out.println("李四分数+1000后：" + score);
     }
