@@ -24,7 +24,7 @@ public class ExcelKit {
 
 
     public static void main(String[] args) {
-        List<Map<String, Object>> maps = readBigExcel("D:\\writeBeanTest.xlsx", -1);
+        List<Map<String, Object>> maps = readBigExcel("D:\\禅医账户绑定就诊卡信息.xlsx", -1);
         int sum = 0;
         for (int i = 0; i < maps.size(); i++) {
             sum++;
