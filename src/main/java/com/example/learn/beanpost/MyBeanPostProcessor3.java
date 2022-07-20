@@ -13,7 +13,7 @@ import java.lang.reflect.Constructor;
  * @Author: wcy
  * @CreateDate: 2022/6/24 18:26
  */
-@Component
+// @Component
 public class MyBeanPostProcessor3 implements SmartInstantiationAwareBeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
