@@ -11,7 +11,7 @@ spring:
   application:
     name: spring-boot-learn
 server:
-  port: 8081
+  port: 8080
 #  servlet:
 #    context-path: /spring-boot-learn
 mybatis-plus:
