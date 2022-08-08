@@ -4,13 +4,14 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import java.time.LocalDateTime;
 import lombok.Data;
 
 /**
  * StudentDO
- * 
+ *
  * @author wcy
- * @date 2022/8/2
+ * @date 2022/8/4
  */
 
 @Data
@@ -27,4 +28,7 @@ public class StudentDO {
 
     @TableField(value = "is_del")
     private Integer isDel;
+
+    @TableField(value = "birthday")
+    private LocalDateTime birthday;
 }

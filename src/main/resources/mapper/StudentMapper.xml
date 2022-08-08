@@ -8,9 +8,10 @@
     <result column="stu_name" jdbcType="VARCHAR" property="stuName" />
     <result column="stu_age" jdbcType="INTEGER" property="stuAge" />
     <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    stu_id, stu_name, stu_age, is_del
+    stu_id, stu_name, stu_age, is_del, birthday
   </sql>
 </mapper>

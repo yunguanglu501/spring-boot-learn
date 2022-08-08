@@ -1,7 +1,12 @@
 package com.example.learn.controller;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.example.learn.entity.DateUser;
+import com.example.learn.entity.Student;
+import com.example.learn.entity.StudentDO;
+import com.example.learn.mapper.StudentMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,11 +43,13 @@ public class DateTestController {
     // public void intDate(WebDataBinder dataBinder){
     //     dataBinder.addCustomFormatter(new DateFormatter("yyyy-MM-dd HH:mm:ss"));
     // }
-
+    @Autowired
+    StudentMapper studentMapper;
     @RequestMapping("test")
     @ResponseBody
-    public DateUser test(@RequestBody DateUser date) {
-        System.out.println(date);
-        return date;
+    public StudentDO test(@RequestBody DateUser date) {
+        StudentDO studentDO = studentMapper.selectOne(Wrappers.<StudentDO>lambdaQuery().eq(StudentDO::getStuName, "张三"));
+        System.out.println("birthday: "+date);
+        return studentDO;
     }
 }

@@ -30,3 +30,11 @@ mybatis-plus:
 #      logpath: /data/applogs/xxl-job/jobhandler
 #      logretentiondays: 30
 #      port: 10001
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
