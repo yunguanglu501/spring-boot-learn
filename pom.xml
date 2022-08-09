@@ -29,11 +29,11 @@
             <artifactId>feign-jackson</artifactId>
             <version>11.0</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.openjdk.jol</groupId>-->
-<!--            <artifactId>jol-core</artifactId>-->
-<!--            <version>0.9</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.9</version>
+        </dependency>
         <dependency>
             <groupId>io.github.openfeign.form</groupId>
             <artifactId>feign-form</artifactId>
