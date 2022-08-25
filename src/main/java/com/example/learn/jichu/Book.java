@@ -9,7 +9,7 @@ package com.example.learn.jichu;
 public class Book {
     public static void main(String[] args) {
         staticFunction();
-        Class<Boolean> type = Boolean.TYPE;
+        // Class<Boolean> type = Boolean.TYPE;
     }
 
     static Book book = new Book();
