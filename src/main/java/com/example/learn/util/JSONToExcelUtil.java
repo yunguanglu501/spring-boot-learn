@@ -293,7 +293,7 @@ public class JSONToExcelUtil {
         }
     }
     public static void main(String[] args) {
-        String jsonPath = "D:\\json2.txt";
+        String jsonPath = "D:\\json0827.txt";
         String savePath = "D:\\";
         String excelName = "demo";
         // 测试1
